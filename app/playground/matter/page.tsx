@@ -50,9 +50,28 @@ const MatterStepTwo = () => {
       render: {
         fillStyle: "yellow",
       },
+      force: { x: 0.2, y: 0.01 },
     });
 
     World.add(engine.world, [floor, ball]);
+
+    // add keyboard to add force to ball when press w a s d
+    document.addEventListener("keydown", (e) => {
+      switch (e.key) {
+        case "w":
+          Matter.Body.applyForce(ball, ball.position, { x: 0, y: -0.05 });
+          break;
+        case "a":
+          Matter.Body.applyForce(ball, ball.position, { x: -0.05, y: 0 });
+          break;
+        case "s":
+          Matter.Body.applyForce(ball, ball.position, { x: 0, y: 0.05 });
+          break;
+        case "d":
+          Matter.Body.applyForce(ball, ball.position, { x: 0.05, y: 0 });
+          break;
+      }
+    });
 
     // create runner
     var runner = Runner.create();
