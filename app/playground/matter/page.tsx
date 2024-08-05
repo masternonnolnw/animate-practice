@@ -54,8 +54,11 @@ const MatterStepTwo = () => {
 
     World.add(engine.world, [floor, ball]);
 
+    // create runner
+    var runner = Runner.create();
+
     // run the engine
-    Runner.run(engine);
+    Runner.run(runner, engine);
 
     // run the renderer
     Render.run(render);
